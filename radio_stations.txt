@@ -1,0 +1,4 @@
+http://radio886.at/streams/radio_88.6/mp3
+http://mp3stream7.apasf.apa.at:8000/1
+http://mp3stream1.apasf.apa.at:8000/1
+http://mp3stream2.apasf.apa.at:8000/1
