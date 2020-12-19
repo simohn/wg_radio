@@ -10,4 +10,4 @@ It is able to play different radio stations.
 
 ## Useful commands
 
-* Test audio with: `speaker-test -c2`
+* Test audio with: `speaker-test -c2 -twav`
