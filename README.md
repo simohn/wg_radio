@@ -7,6 +7,8 @@ It is able to play different radio stations.
 
 * <https://www.hifiberry.com/docs/software/configuring-linux-3-18-x/>
 * <https://devdrik.de/vs-code-mit-raspberry-pi-zero/>
+* <https://www.raspberrypi.org/documentation/linux/software/python.md>
+* <https://wiki.ubuntuusers.de/MPlayer/>
 
 ## Useful commands
 
