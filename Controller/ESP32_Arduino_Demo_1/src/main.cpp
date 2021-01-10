@@ -4,12 +4,11 @@
 #include <WiFiUdp.h>
 #include "credentials.h"
 
-
 // IP address to send UDP data to.
 // it can be ip address of the server or 
 // a network broadcast address
 // here is broadcast address
-const char * udpAddress = "192.168.1.233";
+const char * udpAddress = "192.168.1.136";
 const int udpPort = 44444;
 
 //create UDP instance
@@ -19,7 +18,7 @@ WiFiUDP udp;
 const int potPin = 34;
 
 // variable for storing the potentiometer value
-int potValue = 0;
+uint16_t potValue = 0;
 
 void setup() {
   pinMode(potPin, OUTPUT);
@@ -48,26 +47,21 @@ void loop() {
   // Reading potentiometer value
   potValue = analogRead(potPin);
   Serial.println(potValue);
-  delay(500);
+  delay(100);
+
+  uint8_t volume = (potValue/4095.0)*255.0;
 
   //data will be sent to server
-  uint8_t buffer[50] = "hello world";
-  
+  uint8_t buffer[50] = "Vol: ";
+  buffer[5] = volume;
+  buffer[6] = '\0';
+
   //send hello world to server
   udp.beginPacket(udpAddress, udpPort);
-  udp.write(buffer, 11);
+  udp.write(buffer, 50);
   udp.endPacket();
   memset(buffer, 0, 50);
   
   //processing incoming packet, must be called before reading the buffer
   udp.parsePacket();
-  
-  //receive response from server, it will be HELLO WORLD
-  if(udp.read(buffer, 50) > 0){
-    Serial.print("Server to client: ");
-    Serial.println((char *)buffer);
-  }
-  
-  //Wait
-  delay(500);
 }
